@@ -14,7 +14,7 @@ public interface UtilisateurService {
 
     void delete(Integer id);
 
-    UtilisateurDTO findByEmail(String email);
+//    UtilisateurDTO findByEmail(String email);
 
 //    UtilisateurDTO chanceMotPasse(Cha)
 }
