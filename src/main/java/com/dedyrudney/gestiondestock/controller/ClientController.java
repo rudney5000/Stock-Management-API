@@ -20,21 +20,21 @@ public class ClientController implements ClientApi {
 
     @Override
     public ClientDTO save(ClientDTO clientDTO) {
-        return null;
+        return clientService.save(clientDTO);
     }
 
     @Override
     public ClientDTO findById(Integer id) {
-        return null;
+        return clientService.findById(id);
     }
 
     @Override
     public List<ClientDTO> findAll() {
-        return null;
+        return clientService.findAll();
     }
 
     @Override
     public void delete(Integer id) {
-
+        clientService.delete(id);
     }
 }
