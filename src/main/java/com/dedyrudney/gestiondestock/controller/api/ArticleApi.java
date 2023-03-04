@@ -12,7 +12,7 @@ import java.util.List;
 
 import static com.dedyrudney.gestiondestock.utils.Constants.APP_ROOT;
 
-@Api(APP_ROOT + "/articles")
+@Api("articles")
 public interface ArticleApi {
 
     @PostMapping(

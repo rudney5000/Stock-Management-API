@@ -2,7 +2,7 @@ package com.dedyrudney.gestiondestock.utils;
 
 public interface Constants {
 
-    public static  String APP_ROOT = "gestiondestock/v1";
+    static  String APP_ROOT = "gestiondestock/v1";
     String COMMANDE_FOURNISSEUR_ENDPOINT = APP_ROOT + "/commandesfournisseurs";
     String CREATE_COMMANDE_FOURNISSEUR_ENDPOINT = COMMANDE_FOURNISSEUR_ENDPOINT + "/create";
     String FIND_COMMANDE_FOURNISSEUR_BY_ID_ENDPOINT = COMMANDE_FOURNISSEUR_ENDPOINT + "/{idCommandeFournisseur}";
