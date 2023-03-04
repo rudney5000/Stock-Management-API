@@ -77,7 +77,7 @@ public class ClientServiceImpl implements ClientService {
             log.error("CLient ID is null");
             return;
         }
-        List<CommandeClient> commandeClients = commandeClientRepository.findAllByCleintID(id);
+        List<CommandeClient> commandeClients = commandeClientRepository.findAllByClientId(id);
         if (!commandeClients.isEmpty()){
             throw new InvalidOperationException(
                     "Impossible de supprimer un client qui a deja des commande clients"

@@ -281,7 +281,7 @@ public class CommandeFournisseurServiceImpl implements CommandeFournisseurServic
 
     @Override
     public List<LigneCommandeFournisseurDTO> findAllLignesCommandesFournisseurByCommandeFournisseurId(Integer id_commande) {
-        return ligneCommandeFournisseurRepository.findAllCommandeFournisseurId(id_commande).stream()
+        return ligneCommandeFournisseurRepository.findAllByCommandeFournnisseur_Id(id_commande).stream()
                 .map(LigneCommandeFournisseurDTO::fromEntity)
                 .collect(Collectors.toList());
     }
@@ -292,7 +292,7 @@ public class CommandeFournisseurServiceImpl implements CommandeFournisseurServic
             log.error("Commande fournisseur ID is NULL");
             return;
         }
-        List<LigneCommandeFournisseur> ligneCommandeFournisseurs = ligneCommandeFournisseurRepository.findAllCommandeFournisseurId(id);
+        List<LigneCommandeFournisseur> ligneCommandeFournisseurs = ligneCommandeFournisseurRepository.findAllByCommandeFournnisseur_Id(id);
         if (!ligneCommandeFournisseurs.isEmpty()){
             throw new InvalidOperationException(
                     "Impossible de supprimer une commande fournisseur deja utilisee",
@@ -355,7 +355,7 @@ public class CommandeFournisseurServiceImpl implements CommandeFournisseurServic
     }
 
     private void updateMvtStck(Integer id_commande){
-        List<LigneCommandeFournisseur> ligneCommandeFournisseur = ligneCommandeFournisseurRepository.findAllCommandeFournisseurId(id_commande);
+        List<LigneCommandeFournisseur> ligneCommandeFournisseur = ligneCommandeFournisseurRepository.findAllByCommandeFournnisseur_Id(id_commande);
         ligneCommandeFournisseur.forEach(lig -> {
             effectuerEntree(lig);
         });
