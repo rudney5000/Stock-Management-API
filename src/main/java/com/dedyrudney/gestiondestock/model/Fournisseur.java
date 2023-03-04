@@ -31,7 +31,7 @@ public class Fournisseur extends AbstractEntity {
     @Column(name = "numTel")
     private String numTel;
 
-    @Column(name = "identreprise")
+    @Column(name = "id_entreprise")
     private Integer idEntreprise;
 
     @OneToMany(mappedBy = "fournisseur")

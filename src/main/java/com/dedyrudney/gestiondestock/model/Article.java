@@ -33,7 +33,7 @@ public class Article extends AbstractEntity{
     @Column(name = "photo")
     private String photo;
 
-    @Column(name = "identreprise")
+    @Column(name = "id_entreprise")
     private Integer idEntreprise;
 
     @ManyToOne

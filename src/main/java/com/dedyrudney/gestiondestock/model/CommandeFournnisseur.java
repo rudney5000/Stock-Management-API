@@ -25,11 +25,11 @@ public class CommandeFournnisseur extends AbstractEntity{
     @Enumerated(EnumType.STRING)
     private EtatCommande etatCommande;
 
-    @Column(name = "identreprise")
+    @Column(name = "id_entreprise")
     private Integer idEntreprise;
 
     @ManyToOne
-    @JoinColumn(name = "idfournisseur")
+    @JoinColumn(name = "id_fournisseur")
     private Fournisseur fournisseur;
 
     @OneToMany(mappedBy = "commandeFournnisseur")
