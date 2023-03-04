@@ -1,12 +1,14 @@
 package com.dedyrudney.gestiondestock.controller.api;
 
 import com.dedyrudney.gestiondestock.dto.UtilisateurDTO;
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 import static com.dedyrudney.gestiondestock.utils.Constants.UTILISATEUR_ENDPOINT;
 
+@Api("utilisateurs")
 public interface UtilisateurApi {
 
     @PostMapping(

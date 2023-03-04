@@ -1,13 +1,14 @@
 package com.dedyrudney.gestiondestock.controller.api;
 
 import com.dedyrudney.gestiondestock.dto.ClientDTO;
+import io.swagger.annotations.Api;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 import static com.dedyrudney.gestiondestock.utils.Constants.APP_ROOT;
-
+@Api("clients")
 public interface ClientApi {
 
     @PostMapping(

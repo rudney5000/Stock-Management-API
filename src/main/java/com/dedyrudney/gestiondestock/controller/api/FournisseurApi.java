@@ -1,12 +1,14 @@
 package com.dedyrudney.gestiondestock.controller.api;
 
 import com.dedyrudney.gestiondestock.dto.FournisseurDTO;
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 import static com.dedyrudney.gestiondestock.utils.Constants.FOURNISSEUR_ENDPOINT;
 
+@Api("fournisseur")
 public interface FournisseurApi {
 
     @PostMapping(
