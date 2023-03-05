@@ -11,10 +11,10 @@ spring:
   jpa:
     database: MYSQL
     show-sql: false
-#    properties:
-#      hibernate:
-#        session_factory:
-#          interceptor: com.bouali.gestiondestock.interceptor.Interceptor
+    properties:
+      hibernate:
+        session_factory:
+          interceptor: com.dedyrudney.gestiondestock.interceptor.Interceptor
 
     # Hibernate DDL Auto (create, create-drop, update)
     hibernate:
