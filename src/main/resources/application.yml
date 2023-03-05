@@ -24,8 +24,13 @@ spring:
 server:
   port: 8089
 
+
 flickr:
   apiKey: 4686c4e40882a543146b23cee399f88a
   apiSecret: 972e6b9d7ab40e1c
   appKey: 72157720875168050-49f908b8100b69a1
   appSecret: 26485ef54f86603f
+
+springdoc:
+  swagger-ui:
+    path: localhost:8089/swagger-ui.html
