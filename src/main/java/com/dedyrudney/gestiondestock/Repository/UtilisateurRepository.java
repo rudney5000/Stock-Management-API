@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface UtilisateurRepository extends JpaRepository<Utilisateur, Integer> {
 
-    @Query("select u from Utilisateur u where u.email = : email")
-    Optional<Utilisateur> findUtilisateurByEmail(@Param("email") String email);
+//    @Query("select u from Utilisateur u where u.email = : email")
+    Optional<Utilisateur> findUtilisateurByEmail(/*@Param("email")*/ String email);
 
 }

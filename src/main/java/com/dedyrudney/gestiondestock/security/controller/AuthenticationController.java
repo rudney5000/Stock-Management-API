@@ -18,7 +18,7 @@ import static com.dedyrudney.gestiondestock.utils.Constants.AUTHENTICATION_ENDPO
 
 @RestController
 @RequestMapping(AUTHENTICATION_ENDPOINT)
-public class AuthenticationController {
+public class AuthenticationController implements AuthenticationApi{
 
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -30,7 +30,7 @@ public class AuthenticationController {
     private JwtUtil jwtUtil;
 
     @PostMapping("/authenticate")
-    public ResponseEntity<AuthenticationResponse> authenticationResponse(@RequestBody AuthenticationRequest authenticationRequest) {
+    public ResponseEntity<AuthenticationResponse> authenticate(AuthenticationRequest authenticationRequest) {
 //        authenticationManager.authenticate(
 //                new UsernamePasswordAuthenticationToken(
 //                        authenticationRequest.getLogin(),
@@ -42,6 +42,6 @@ public class AuthenticationController {
 
         final String jwt = JwtUtil.generateToken(userDetails);
 
-        return ResponseEntity.ok(AuthenticationResponse.builder().accessToken("stand_access_token").build());
+        return ResponseEntity.ok(AuthenticationResponse.builder().accessToken(jwt).build());
     }
 }
