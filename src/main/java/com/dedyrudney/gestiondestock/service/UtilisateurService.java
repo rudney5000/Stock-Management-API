@@ -1,5 +1,6 @@
 package com.dedyrudney.gestiondestock.service;
 
+import com.dedyrudney.gestiondestock.dto.ChangeMotDePasseUtilisateurDTO;
 import com.dedyrudney.gestiondestock.dto.UtilisateurDTO;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public interface UtilisateurService {
 
     void delete(Integer id);
 
-//    UtilisateurDTO findByEmail(String email);
+    UtilisateurDTO findByEmail(String email);
 
-//    UtilisateurDTO chanceMotPasse(Cha)
+    UtilisateurDTO chanceMotDePasse(ChangeMotDePasseUtilisateurDTO changeMotDePasseUtilisateurDTO);
 }

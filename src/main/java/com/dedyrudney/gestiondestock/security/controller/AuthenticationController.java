@@ -3,6 +3,7 @@ package com.dedyrudney.gestiondestock.security.controller;
 import com.dedyrudney.gestiondestock.security.dto.AuthenticationRequest;
 import com.dedyrudney.gestiondestock.security.dto.AuthenticationResponse;
 import com.dedyrudney.gestiondestock.security.service.ApplicationUserDetailsService;
+import com.dedyrudney.gestiondestock.security.utils.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -23,18 +24,24 @@ public class AuthenticationController {
     private AuthenticationManager authenticationManager;
 
     @Autowired
-    private ApplicationUserDetailsService applicationUserDetailsService;
+    private ApplicationUserDetailsService userDetailsService;
+
+    @Autowired
+    private JwtUtil jwtUtil;
 
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticationResponse(@RequestBody AuthenticationRequest authenticationRequest) {
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        authenticationRequest.getLogin(),
-                        authenticationRequest.getPassword()
-                )
-        );
+//        authenticationManager.authenticate(
+//                new UsernamePasswordAuthenticationToken(
+//                        authenticationRequest.getLogin(),
+//                        authenticationRequest.getPassword()
+//                )
+//        );
 
-        final UserDetails userDetails = applicationUserDetailsService.loadUserByUsername(authenticationRequest.getLogin());
+        final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getLogin());
+
+        final String jwt = JwtUtil.generateToken(userDetails);
+
         return ResponseEntity.ok(AuthenticationResponse.builder().accessToken("stand_access_token").build());
     }
 }
