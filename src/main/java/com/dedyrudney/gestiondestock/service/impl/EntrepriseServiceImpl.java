@@ -3,6 +3,7 @@ package com.dedyrudney.gestiondestock.service.impl;
 import com.dedyrudney.gestiondestock.Repository.EntrepriseRepository;
 import com.dedyrudney.gestiondestock.Repository.RolesRepository;
 import com.dedyrudney.gestiondestock.dto.EntrepriseDTO;
+import com.dedyrudney.gestiondestock.dto.RolesDTO;
 import com.dedyrudney.gestiondestock.dto.UtilisateurDTO;
 import com.dedyrudney.gestiondestock.exception.EntityNotFoundException;
 import com.dedyrudney.gestiondestock.exception.ErrorCodes;
@@ -55,9 +56,17 @@ public class EntrepriseServiceImpl implements EntrepriseService{
         );
 
         UtilisateurDTO utilisateur = fromEntreprise(savedEntreprise);
-        return null;
-    }
 
+        UtilisateurDTO savedUser = utilisateurService.save(utilisateur);
+
+        RolesDTO rolesDTO = RolesDTO.builder()
+                .roleName("ADMIN")
+                .utilisateur(savedUser)
+                .build();
+        rolesRepository.save(RolesDTO.toEntity(rolesDTO));
+
+        return savedEntreprise;
+    }
 
 
     @Override
