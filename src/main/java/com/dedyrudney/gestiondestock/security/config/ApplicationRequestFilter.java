@@ -2,13 +2,13 @@ package com.dedyrudney.gestiondestock.security.config;
 
 import com.dedyrudney.gestiondestock.security.service.ApplicationUserDetailsService;
 import com.dedyrudney.gestiondestock.security.utils.JwtUtil;
+import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;
@@ -28,17 +28,20 @@ public class ApplicationRequestFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+
         final String authHeader = request.getHeader("Authorization");
 
-        String username = null;
+        String userEnail = null;
         String jwt = null;
+        String id_entreprise = null;
 
-        if (StringUtils.hasLength(authHeader) && authHeader.startsWith("Bearer ")){
+        if (authHeader != null && authHeader.startsWith("Bearer ")){
             jwt = authHeader.substring(7);
-            username = jwtUtil.extractUsername(jwt);
+            userEnail = jwtUtil.extractUsername(jwt);
+            id_entreprise = jwtUtil.extractIdEntreprise(jwt);
         }
-        if (StringUtils.hasLength(username) && SecurityContextHolder.getContext().getAuthentication() == null){
-            UserDetails userDetails = applicationUserDetailsService.loadUserByUsername(username);
+        if (userEnail != null && SecurityContextHolder.getContext().getAuthentication() == null){
+            UserDetails userDetails = applicationUserDetailsService.loadUserByUsername(userEnail);
             if (jwtUtil.validateToken(jwt, userDetails)){
                 UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
                         userDetails, null, userDetails.getAuthorities()
@@ -49,6 +52,7 @@ public class ApplicationRequestFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
             }
         }
+        MDC.put("id_entreprise", id_entreprise);
         filterChain.doFilter(request, response);
     }
 }

@@ -31,17 +31,16 @@ public class AuthenticationController implements AuthenticationApi{
 
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(AuthenticationRequest authenticationRequest) {
-//        authenticationManager.authenticate(
-//                new UsernamePasswordAuthenticationToken(
-//                        authenticationRequest.getLogin(),
-//                        authenticationRequest.getPassword()
-//                )
-//        );
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        authenticationRequest.getLogin(),
+                        authenticationRequest.getPassword()
+                )
+        );
 
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getLogin());
 
-        final String jwt = JwtUtil.generateToken(userDetails);
-
+        final String jwt = jwtUtil.generateToken(userDetails);
         return ResponseEntity.ok(AuthenticationResponse.builder().accessToken(jwt).build());
     }
 }

@@ -1,7 +1,7 @@
+server:
+  port: 8089
+
 spring:
-  mvc:
-    pathmatch:
-      matching-strategy: ant_path_matcher
   datasource:
     url: jdbc:mysql://localhost:3306/gestionstock?createDatabaseIfNotExist=true&userSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
     username: root
@@ -21,16 +21,8 @@ spring:
       ddl-auto: update
       dialect: org.hibernate.dialect.MySQL5Dialect
 
-server:
-  port: 8089
-
-
 flickr:
   apiKey: 4686c4e40882a543146b23cee399f88a
   apiSecret: 972e6b9d7ab40e1c
   appKey: 72157720875168050-49f908b8100b69a1
   appSecret: 26485ef54f86603f
-
-springdoc:
-  swagger-ui:
-    path: localhost:8089/swagger-ui.html
