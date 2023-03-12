@@ -12,10 +12,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.io.InputStream;
+
 @Service
 @Slf4j
-
-public class StrategyArticlePhoto implements Strategy{
+public class StrategyArticlePhoto implements Strategy<ArticleDTO>{
 
     private FlickrPhotoService flickrPhotoService;
     private ArticleService articleService;
