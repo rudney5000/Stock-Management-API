@@ -14,7 +14,7 @@ import org.springframework.util.StringUtils;
 
 import java.io.InputStream;
 
-@Service
+@Service("fournisseurStrategy")
 @Slf4j
 public class SavedFournisseurPhoto implements Strategy<FournisseurDTO> {
 

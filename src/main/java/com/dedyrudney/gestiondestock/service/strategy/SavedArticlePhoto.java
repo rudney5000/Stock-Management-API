@@ -13,15 +13,15 @@ import org.springframework.util.StringUtils;
 
 import java.io.InputStream;
 
-@Service
+@Service("articleStrategy")
 @Slf4j
-public class StrategyArticlePhoto implements Strategy<ArticleDTO>{
+public class SavedArticlePhoto implements Strategy<ArticleDTO>{
 
     private FlickrPhotoService flickrPhotoService;
     private ArticleService articleService;
 
     @Autowired
-    public StrategyArticlePhoto(FlickrPhotoService flickrPhotoService, ArticleService articleService) {
+    public SavedArticlePhoto(FlickrPhotoService flickrPhotoService, ArticleService articleService) {
         this.flickrPhotoService = flickrPhotoService;
         this.articleService = articleService;
     }

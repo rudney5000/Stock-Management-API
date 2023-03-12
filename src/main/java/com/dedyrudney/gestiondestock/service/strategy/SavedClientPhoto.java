@@ -13,7 +13,7 @@ import org.springframework.util.StringUtils;
 
 import java.io.InputStream;
 
-@Service
+@Service("clientStrategy")
 @Slf4j
 public class SavedClientPhoto implements Strategy<ClientDTO> {
 
